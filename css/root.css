@@ -1,0 +1,37 @@
+/* * ARQUIVO: css/root.css
+ * OBJETIVO: Definir o Design System (Cores, Tipografia, Espaçamento)
+ */
+
+:root {
+    /* Paleta de Cores (8+ cores) */
+    --cor-primaria: #005A9C;      /* Azul AcolheTech */
+    --cor-secundaria: #00BFFF;   /* Azul Claro (Destaque) */
+    --cor-sucesso: #2E8B57;       /* Verde */
+    --cor-alerta: #FFD700;       /* Amarelo */
+    --cor-erro: #DC143C;         /* Vermelho */
+
+    --cor-neutra-900: #222222;    /* Texto principal */
+    --cor-neutra-700: #555555;    /* Texto secundário */
+    --cor-neutra-200: #F4F4F4;    /* Fundo suave */
+    --cor-neutra-100: #FFFFFF;    /* Branco (Fundo) */
+    
+    /* Tipografia Hierárquica (5+ tamanhos) */
+    --fonte-principal: 'Helvetica', Arial, sans-serif;
+    --texto-g:   2.5rem;   /* 40px */
+    --texto-m:   1.75rem;  /* 28px */
+    --texto-p:   1.125rem; /* 18px */
+    --texto-pp:  1rem;     /* 16px (base) */
+    --texto-ppp: 0.875rem; /* 14px */
+
+    /* Sistema de Espaçamento Modular (Base 8px) */
+    --espaco-1: 8px;
+    --espaco-2: 16px;
+    --espaco-3: 24px;
+    --espaco-4: 32px;
+    --espaco-5: 48px;
+    --espaco-6: 64px;
+
+    /* Outros */
+    --borda-raio: 4px;
+    --sombra-padrao: 0 4px 12px rgba(0,0,0,0.05);
+}

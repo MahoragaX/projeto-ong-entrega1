@@ -1,0 +1,157 @@
+/* * ARQUIVO: css/components.css
+ * OBJETIVO: Estilizar componentes (Botões, Cards, Forms, Badges)
+ */
+
+/* Títulos */
+h1, h2, h3 {
+    color: var(--cor-primaria);
+    margin-bottom: var(--espaco-3);
+}
+h1 { font-size: var(--texto-g); }
+h2 { font-size: var(--texto-m); }
+h3 { font-size: var(--texto-p); }
+
+/* Botões com Estados */
+.btn {
+    display: inline-block;
+    padding: var(--espaco-1) var(--espaco-3);
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-100);
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--borda-raio);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover { /* Estado Hover */
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    color: var(--cor-neutra-900);
+}
+
+.btn:focus { /* Estado Focus (Acessibilidade) */
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+.btn:active { /* Estado Active (Clicado) */
+    transform: scale(0.98);
+}
+
+/* Exemplo de botão secundário */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--cor-primaria);
+}
+.btn-secondary:hover {
+    background-color: var(--cor-neutra-200);
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+/* Cards Responsivos (para projetos) */
+.card {
+    background-color: var(--cor-neutra-100);
+    box-shadow: var(--sombra-padrao);
+    border-radius: var(--borda-raio);
+    overflow: hidden; /* Garante que a imagem não vaze */
+    margin-bottom: var(--espaco-3);
+    height: 100%; /* Para alinhar em linhas */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Faz a imagem cobrir o espaço */
+}
+
+.card-content {
+    padding: var(--espaco-3);
+    flex-grow: 1; /* Faz o conteúdo crescer */
+}
+
+.card-content .btn {
+    margin-top: var(--espaco-2);
+}
+
+/* Badges e Tags */
+.badge {
+    display: inline-block;
+    padding: 4px var(--espaco-1);
+    font-size: var(--texto-ppp);
+    font-weight: bold;
+    border-radius: var(--borda-raio);
+    background-color: var(--cor-neutra-200);
+    color: var(--cor-neutra-700);
+    margin-right: var(--espaco-1);
+    margin-bottom: var(--espaco-1);
+}
+
+.badge-success {
+    background-color: var(--cor-sucesso);
+    color: var(--cor-neutra-100);
+}
+.badge-alert {
+    background-color: var(--cor-alerta);
+    color: var(--cor-neutra-900);
+}
+
+/* Formulários Estilizados */
+form {
+    background-color: var(--cor-neutra-200);
+    padding: var(--espaco-4);
+    border-radius: var(--borda-raio);
+}
+
+form fieldset {
+    border: none;
+    margin-bottom: var(--espaco-3);
+}
+
+form legend {
+    font-size: var(--texto-p);
+    font-weight: bold;
+    color: var(--cor-primaria);
+    margin-bottom: var(--espaco-2);
+}
+
+form div {
+    margin-bottom: var(--espaco-2);
+}
+
+form label {
+    display: block;
+    margin-bottom: var(--espaco-1);
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form input[type="tel"] {
+    width: 100%;
+    padding: var(--espaco-1) var(--espaco-2);
+    border: 1px solid var(--cor-neutra-700);
+    border-radius: var(--borda-raio);
+    font-size: var(--texto-pp);
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 5px rgba(0, 90, 156, 0.5);
+}
+
+/* Validação Visual (HTML5) */
+form input:invalid:not(:placeholder-shown) {
+    border-color: var(--cor-erro);
+    background-color: #FFF0F0;
+}
+
+form input:valid:not(:placeholder-shown) {
+    border-color: var(--cor-sucesso);
+}

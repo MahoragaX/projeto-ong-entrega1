@@ -3,28 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Voluntários - AcolheTech</title>
+    <title>AcolheTech - Programando Futuros</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <h1>AcolheTech</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos e Voluntariado</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-            </ul>
-        </nav>
+<header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">AcolheTech</a>
+            
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu">
+                &#9776; </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="projetos.html">Sobre Nós</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projetos.html#projetos">Projetos</a></li>
+                            <li><a href="projetos.html#doacoes">Doações</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="cadastro.html" class="btn">Seja Voluntário</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="cadastro">
-            <h2>Formulário de Cadastro de Voluntários</h2>
-            <p>Preencha seus dados para analisarmos seu perfil.</p>
-
-            <img src="imagens/cadastro.jpg" alt="Espaço reservado para imagem de cadastro" width="500">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8" style="margin: 0 auto;">
+                    <section id="cadastro">
+                        <h2>Formulário de Cadastro de Voluntários</h2>
+                        <p>Preencha seus dados para analisarmos seu perfil.</p>
+                        
+                        <img src="imagens/cadastro.jpg" alt="Ícone de formulário" style="margin-bottom: var(--espaco-3);">
             <form action="#" method="post">
                 
                 <fieldset>
@@ -85,11 +105,16 @@
                 </div>
 
             </form>
-        </section>
+                        </section>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>

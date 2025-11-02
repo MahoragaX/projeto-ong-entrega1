@@ -4,45 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AcolheTech - Programando Futuros</title>
+    
+        <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <h1>AcolheTech</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos e Voluntariado</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-            </ul>
-        </nav>
+<header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">AcolheTech</a>
+            
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu">
+                &#9776; </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="projetos.html">Sobre Nós</a>
+                        
+                        <ul class="dropdown-menu">
+                            <li><a href="projetos.html#projetos">Projetos</a></li>
+                            <li><a href="projetos.html#doacoes">Doações</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="cadastro.html" class="btn">Seja Voluntário</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section id="sobre">
-            <h2>Transformando Vidas Através da Tecnologia</h2>
-            <p>
-                A AcolheTech é uma ONG dedicada a oferecer educação tecnológica de 
-                qualidade para jovens em situação de vulnerabilidade. 
-                Acreditamos no poder da programação para criar novas oportunidades.
-            </p>
-            
-            <img src="imagens/inicio.jpg" alt="Espaço reservado para imagem da ONG" width="500">
-        </section>
+        <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <section id="sobre">
+                        <h2>Transformando Vidas Através da Tecnologia</h2>
+                        <p>A AcolheTech é uma ONG dedicada a oferecer educação...</p>
+                        
+                        <div>
+                            <span class="badge badge-success">Educação</span>
+                            <span class="badge">Tecnologia</span>
+                            <span class="badge">Inclusão Social</span>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <img src="imagens/inicio.jpg" alt="Jovens estudando em computadores">
+                </div>
+            </div>
 
-        <section id="contato">
-            <h2>Informações de Contato</h2>
-            <p>Entre em contato conosco para parcerias e mais informações:</p>
-            <ul>
-                <li><strong>Email:</strong> contato@acolhetech.org</li>
-                <li><strong>Telefone:</strong> (11) 99999-8888</li>
-                <li><strong>Endereço:</strong> Rua da Mil, 123, São Paulo - SP</li>
-            </ul>
-        </section>
-    </main>
+            <hr style="margin: var(--espaco-5) 0;">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="contato">
+                        <h2>Informações de Contato</h2>
+                        <p>Entre em contato conosco para parcerias e mais informações:</p>
+                        <ul>
+                            <li><strong>Email:</strong> contato@acolhetech.org</li>
+                            <li><strong>Telefone:</strong> (11) 99999-8888</li>
+                            <li><strong>Endereço:</strong> Rua da Mil, 123, São Paulo - SP</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+        </main>
 
     <footer>
-        <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>

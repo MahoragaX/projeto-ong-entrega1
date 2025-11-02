@@ -3,52 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos e Voluntariado - AcolheTech</title>
+    <title>AcolheTech - Programando Futuros</title>
+    
+    <link rel="stylesheet" href="css/main.css">
+    
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <h1>AcolheTech</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos e Voluntariado</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-            </ul>
-        </nav>
+<header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">AcolheTech</a>
+            
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu">
+                &#9776; </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="projetos.html">Sobre Nós</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="projetos.html#projetos">Projetos</a></li>
+                            <li><a href="projetos.html#doacoes">Doações</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="cadastro.html" class="btn">Seja Voluntário</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="voluntariado">
-            <h2>Junte-se a Nós: Voluntariado</h2>
-            <p>
-                Nossos voluntários são o coração da AcolheTech. 
-                Procuramos mentores, instrutores e profissionais para 
-                inspirar nossos alunos.
-            </p>
-            <p>
-                Qualquer que seja sua habilidade, você pode fazer a diferença. 
-                Interessado? <a href="cadastro.html">Cadastre-se aqui!</a>
-            </p>
+        <div class="container">
+            <section id="voluntariado">
+                <h2>Junte-se a Nós: Voluntariado</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="imagens/projetos.jpg" alt="Voluntários trabalhando juntos">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Seja um Mentor</h3>
+                        <p>Buscamos mentores, instrutores e profissionais para inspirar nossos alunos...</p>
+                        <a href="cadastro.html" class="btn">Cadastre-se Agora</a>
+                    </div>
+                </div>
+            </section>
             
-            <img src="imagens/projetos.jpg" alt="Espaço reservado para imagem de voluntariado" width="500">
-        </section>
+            <hr style="margin: var(--espaco-5) 0;">
 
-        <section id="doacoes">
-            <h2>Como Doar</h2>
-            <p>
-                Sua doação nos permite manter nossos laboratórios, 
-                adquirir equipamentos e expandir nossos cursos.
-            </p>
-            <ul>
-                <li><strong>PIX (CNPJ):</strong> 12.345.678/0001-99</li>
-                <li><strong>Banco Digital (Conta):</strong> Ag 0001, C/C 123456-7</li>
-            </ul>
-        </section>
+            <section id="projetos">
+                <h2>Nossos Projetos Atuais</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card">
+                            <img src="imagens/projeto-web.jpg" alt="Curso de Web Design" class="card-image">
+                            <div class="card-content">
+                                <span class="badge badge-alert">Novo</span>
+                                <h3>Curso de Web Design</h3>
+                                <p>Ensina HTML, CSS e JavaScript para jovens da comunidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card">
+                            <img src="imagens/projeto-hardware.jpg" alt="Curso de Hardware" class="card-image">
+                            <div class="card-content">
+                                <span class="badge">Em Andamento</span>
+                                <h3>Manutenção de Computadores</h3>
+                                <p>Oficina prática para hardware e software.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card">
+                            <img src="imagens/projeto-logica.jpg" alt="Curso de Lógica" class="card-image">
+                            <div class="card-content">
+                                <span class="badge badge-success">Concluído</span>
+                                <h3>Introdução à Lógica</h3>
+                                <p>A base do pensamento computacional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr style="margin: var(--espaco-5) 0;">
+            
+            <section id="doacoes">
+                 <h2>Como Doar</h2>
+                 <p>Sua doação nos permite manter nossos laboratórios...</p>
+                 </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </body>

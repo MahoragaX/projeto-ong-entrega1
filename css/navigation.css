@@ -1,0 +1,108 @@
+/* * ARQUIVO: css/navigation.css
+ * OBJETIVO: Menu principal, Dropdown e Menu Hambúrguer
+ */
+
+.main-header {
+    background-color: var(--cor-neutra-100);
+    box-shadow: var(--sombra-padrao);
+    padding: var(--espaco-2) 0;
+}
+
+.main-header .container {
+    display: flex; /* Flexbox para alinhar logo e nav */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--texto-m);
+    font-weight: bold;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+/* Menu Desktop */
+.main-nav ul {
+    list-style: none;
+    display: flex; /* Flexbox para alinhar itens do menu */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--cor-neutra-700);
+    font-weight: bold;
+    padding: var(--espaco-1) var(--espaco-2);
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus { /* Estado de Foco */
+    color: var(--cor-primaria);
+    background-color: var(--cor-neutra-200);
+}
+
+/* Menu Dropdown (exemplo) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: var(--cor-neutra-100);
+    box-shadow: var(--sombra-padrao);
+    min-width: 200px;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Aparece no hover */
+}
+
+/* --- Navegação Mobile (Menu Hambúrguer) --- */
+.hamburger-btn {
+    display: none; /* Escondido no desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--texto-m);
+    color: var(--cor-primaria);
+}
+
+/* Onde o menu hambúrguer aparece */
+@media (max-width: 767px) {
+    .main-nav {
+        display: none; /* Esconde o menu desktop */
+        position: absolute;
+        top: 75px; /* Altura do header */
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-neutra-100);
+        box-shadow: var(--sombra-padrao);
+    }
+    
+    /* Classe ativada via JS */
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Menu vira vertical */
+    }
+
+    .main-nav li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--cor-neutra-200);
+    }
+    
+    .hamburger-btn {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+    
+    /* Esconde o dropdown complexo no mobile */
+    .dropdown .dropdown-menu {
+        display: none !important; 
+    }
+}
