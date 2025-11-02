@@ -1,121 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcolheTech - Programando Futuros</title>
-    
-    <link rel="stylesheet" href="css/main.css">
-    
-    <script src="js/script.js" defer></script>
-</head>
-<body>
-
-<header class="main-header">
-        <div class="container">
-            <a href="index.html" class="logo">AcolheTech</a>
-            
-            <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu">
-                &#9776; </button>
-
-            <nav class="main-nav" id="main-nav">
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    
-                    <li class="dropdown">
-                        <a href="projetos.html">Sobre Nós</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="projetos.html#projetos">Projetos</a></li>
-                            <li><a href="projetos.html#doacoes">Doações</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a href="cadastro.html" class="btn">Seja Voluntário</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8" style="margin: 0 auto;">
-                    <section id="cadastro">
-                        <h2>Formulário de Cadastro de Voluntários</h2>
-                        <p>Preencha seus dados para analisarmos seu perfil.</p>
-                        
-                        <img src="imagens/cadastro.jpg" alt="Ícone de formulário" style="margin-bottom: var(--espaco-3);">
-            <form action="#" method="post">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8" style="margin: 0 auto;">
+            <section id="cadastro">
+                <h2>Formulário de Cadastro de Voluntários</h2>
+                <p>Preencha seus dados para analisarmos seu perfil.</p>
                 
-                <fieldset>
-                    <legend>Dados Pessoais</legend>
+                <img src="/imagens/cadastro.jpg" alt="Ícone de formulário" style="margin-bottom: var(--espaco-3);">
 
+                <form action="#" method="post" id="form-cadastro" novalidate>
+                    
+                    <fieldset>
+                        <legend>Dados Pessoais</legend>
+                        <div>
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" name="nome_completo" required minlength="3">
+                            <span class="error-message">Por favor, informe seu nome completo.</span>
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message">Por favor, insira um e-mail válido.</span>
+                        </div>
+                        <div>
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" name="cpf" 
+                                   pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+                                   placeholder="123.456.789-00" required>
+                            <span class="error-message">Formato de CPF inválido (use XXX.XXX.XXX-XX).</span>
+                        </div>
+                        <div>
+                            <label for="telefone">Telefone:</label>
+                            <input type="tel" id="telefone" name="telefone" 
+                                   pattern="\(\d{2}\)\s\d{4,5}-\d{4}" 
+                                   placeholder="(11) 98765-4321" required>
+                            <span class="error-message">Formato de telefone inválido (use (XX) XXXXX-XXXX).</span>
+                        </div>
+                    </fieldset>
+                    
                     <div>
-                        <label for="nome">Nome Completo:</label>
-                        <input type="text" id="nome" name="nome_completo" required>
+                        <button type="submit" class="btn">Enviar Cadastro</button>
                     </div>
-                    <div>
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required placeholder="seuemail@dominio.com">
+                    
+                    <div id="form-success-message" class="badge badge-success" style="display: none; margin-top: var(--espaco-2);">
+                        Cadastro enviado com sucesso!
                     </div>
-                    <div>
-                        <label for="nascimento">Data de Nascimento:</label>
-                        <input type="date" id="nascimento" name="data_nascimento" required>
-                    </div>
-                    <div>
-                        <label for="cpf">CPF:</label>
-                        <input type="text" id="cpf" name="cpf" 
-                               pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
-                               placeholder="123.456.789-00" required>
-                    </div>
-                    <div>
-                        <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" 
-                               pattern="\(\d{2}\)\s\d{4,5}-\d{4}" 
-                               placeholder="(11) 98765-4321" required>
-                    </div>
-                </fieldset>
-                
-                <fieldset>
-                    <legend>Endereço</legend>
-
-                    <div>
-                        <label for="cep">CEP:</label>
-                        <input type="text" id="cep" name="cep" 
-                               pattern="\d{5}-\d{3}" 
-                               placeholder="01234-567" required>
-                    </div>
-                    <div>
-                        <label for="endereco">Endereço (Rua, N°):</label>
-                        <input type="text" id="endereco" name="endereco" required>
-                    </div>
-                    <div>
-                        <label for="cidade">Cidade:</label>
-                        <input type="text" id="cidade" name="cidade" required>
-                    </div>
-                    <div>
-                        <label for="estado">Estado:</label>
-                        <input type="text" id="estado" name="estado" required>
-                    </div>
-                </fieldset>
-
-                <div>
-                    <button type="submit">Enviar Cadastro</button>
-                    <button type="reset">Limpar Campos</button>
-                </div>
-
-            </form>
-                        </section>
-                </div>
-            </div>
+                </form>
+            </section>
         </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 AcolheTech. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+    </div>
+</div>

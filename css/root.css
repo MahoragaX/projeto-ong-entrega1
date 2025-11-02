@@ -1,29 +1,25 @@
-/* * ARQUIVO: css/root.css
- * OBJETIVO: Definir o Design System (Cores, Tipografia, Espaçamento)
- */
+/* * ARQUIVO: css/root.css */
 
 :root {
-    /* Paleta de Cores (8+ cores) */
-    --cor-primaria: #005A9C;      /* Azul AcolheTech */
-    --cor-secundaria: #00BFFF;   /* Azul Claro (Destaque) */
-    --cor-sucesso: #2E8B57;       /* Verde */
-    --cor-alerta: #FFD700;       /* Amarelo */
-    --cor-erro: #DC143C;         /* Vermelho */
-
-    --cor-neutra-900: #222222;    /* Texto principal */
-    --cor-neutra-700: #555555;    /* Texto secundário */
-    --cor-neutra-200: #F4F4F4;    /* Fundo suave */
-    --cor-neutra-100: #FFFFFF;    /* Branco (Fundo) */
+    /* Paleta */
+    --cor-primaria: #005A9C;
+    --cor-secundaria: #00BFFF;
+    --cor-sucesso: #2E8B57;
+    --cor-erro: #DC143C;
+    --cor-neutra-900: #222222;
+    --cor-neutra-700: #555555;
+    --cor-neutra-200: #F4F4F4;
+    --cor-neutra-100: #FFFFFF;
     
-    /* Tipografia Hierárquica (5+ tamanhos) */
+    /* Tipografia */
     --fonte-principal: 'Helvetica', Arial, sans-serif;
-    --texto-g:   2.5rem;   /* 40px */
-    --texto-m:   1.75rem;  /* 28px */
-    --texto-p:   1.125rem; /* 18px */
-    --texto-pp:  1rem;     /* 16px (base) */
-    --texto-ppp: 0.875rem; /* 14px */
+    --texto-g:   2.5rem;
+    --texto-m:   1.75rem;
+    --texto-p:   1.125rem;
+    --texto-pp:  1rem;
+    --texto-ppp: 0.875rem;
 
-    /* Sistema de Espaçamento Modular (Base 8px) */
+    /* Espaçamento */
     --espaco-1: 8px;
     --espaco-2: 16px;
     --espaco-3: 24px;

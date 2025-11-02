@@ -1,6 +1,4 @@
-/* * ARQUIVO: css/main.css
- * OBJETIVO: Importar todos os módulos CSS
- */
+/* * ARQUIVO: css/main.css */
 
 @import url('root.css');
 @import url('layout.css');
