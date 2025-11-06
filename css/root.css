@@ -31,3 +31,22 @@
     --borda-raio: 4px;
     --sombra-padrao: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+
+:root[data-theme="dark"] {
+    /* Paleta Escura (Alto Contraste) */
+    --cor-primaria: #00BFFF;     /* Azul Claro (Destaque) */
+    --cor-secundaria: #FFFFFF;   /* Branco */
+    
+    --cor-neutra-900: #F4F4F4;    /* Texto principal (claro) */
+    --cor-neutra-700: #CCCCCC;    /* Texto secundário (claro) */
+    --cor-neutra-200: #222222;    /* Fundo suave (escuro) */
+    --cor-neutra-100: #121212;    /* Fundo principal (escuro) */
+    
+    --sombra-padrao: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+/* Transição suave de cores */
+body, .main-header, .card, form {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -1,20 +1,28 @@
-/* * ARQUIVO: js/script.js (Versão Otimizada para SPA)
- * OBJETIVO: Roteamento, Menu e Validação.
+/* *
+ * script.js - Funções principais da AcolheTech
+ * * Lida com o roteamento da SPA, menu mobile,
+ * validação de formulário e troca de tema.
  */
 
 // ===================================================================
 // INICIALIZAÇÃO GERAL
 // ===================================================================
 
-// Espera o DOM carregar
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSPARouter();
+    initThemeToggle();
+    // A validação do formulário (initFormValidation) é chamada
+    // pelo roteador quando a página de cadastro é carregada.
 });
 
 // ===================================================================
-// MÓDULO 1: NAVEGAÇÃO (Menu Hambúrguer)
+// NAVEGAÇÃO (Menu Hambúrguer)
 // ===================================================================
+
+/**
+ * Inicializa a funcionalidade do menu hambúrguer.
+ */
 function initMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mainNav = document.getElementById('main-nav');
@@ -27,26 +35,25 @@ function initMobileMenu() {
 }
 
 // ===================================================================
-// MÓDULO 2: ROTEADOR SPA (Single Page Application)
+// ROTEADOR SPA (Single Page Application)
 // ===================================================================
 
 const mainContent = document.getElementById('main-content');
-const pageCache = new Map(); // Cache para não recarregar páginas
+const pageCache = new Map(); // Cache para não recarregar páginas já visitadas
 
+/**
+ * Carrega o conteúdo da página via fetch e o injeta no <main>.
+ * @param {string} path - O caminho da URL (ex: "/projetos.html").
+ * @param {string} [hash] - O fragmento da URL (ex: "#doacoes").
+ */
 async function loadPageContent(path, hash) {
     if (!mainContent) return;
 
     // Fecha o menu mobile ao navegar
     document.getElementById('main-nav').classList.remove('active');
 
-    // Define o caminho da página
-    let pagePath = path === '/' ? '/index.html' : path;
-    
-    // Otimização: Se for '/index.html', carrega o 'home.html' (template)
-    // Para simplificar, vou criar um template da home
-    if (pagePath === '/index.html') {
-         pagePath = '/home.html';
-    }
+    // Se for "/", carrega o template "home.html"
+    let pagePath = (path === '/' || path.endsWith('index.html')) ? '/home.html' : path;
 
     let content = '';
 
@@ -56,7 +63,6 @@ async function loadPageContent(path, hash) {
     } else {
         // 2. Se não está no cache, busca na rede (fetch)
         try {
-            // OTIMIZAÇÃO: O 'fetch' agora usa o caminho absoluto
             const response = await fetch(pagePath);
             if (!response.ok) throw new Error('Página não encontrada.');
             
@@ -72,20 +78,25 @@ async function loadPageContent(path, hash) {
     // 3. Injeta o conteúdo no <main>
     mainContent.innerHTML = content;
 
-    // 4. OTIMIZAÇÃO: Lida com âncoras (ex: /projetos.html#doacoes)
+    // 4. Lida com âncoras (ex: /projetos.html#doacoes)
     if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        setTimeout(() => {
+            const element = document.querySelector(hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 0);
     }
 
-    // 5. IMPORTANTE: Se for a página de cadastro, inicializa o formulário
+    // 5. Se for a página de cadastro, inicializa o formulário
     if (pagePath === '/cadastro.html') {
         initFormValidation();
     }
 }
 
+/**
+ * Inicializa o roteador SPA.
+ */
 function initSPARouter() {
     // Delegação de evento: ouve todos os cliques no body
     document.body.addEventListener('click', event => {
@@ -98,15 +109,16 @@ function initSPARouter() {
 
         event.preventDefault(); // Impede o recarregamento
 
-        // OTIMIZAÇÃO: Pega o 'href' e o 'hash'
         const href = target.getAttribute('href');
         const url = new URL(href, window.location.origin);
         const path = url.pathname;
         const hash = url.hash;
 
-        // Atualiza a URL na barra do navegador
-        history.pushState({ path }, '', href);
-        // Carrega o conteúdo
+        // Atualiza a URL na barra do navegador (se não for a mesma)
+        if (window.location.href !== url.href) {
+            history.pushState({ path }, '', href);
+        }
+        
         loadPageContent(path, hash);
     });
 
@@ -117,21 +129,26 @@ function initSPARouter() {
         loadPageContent(path, hash);
     });
 
-    // Carrega a página inicial ou a página de F5
+    // Carrega o conteúdo da página inicial (ou da URL atual em caso de F5)
     const initialPath = window.location.pathname;
     const initialHash = window.location.hash;
     loadPageContent(initialPath, initialHash);
 }
 
 // ===================================================================
-// MÓDULO 3: VALIDAÇÃO DE FORMULÁRIO (Entrega III)
+// VALIDAÇÃO DE FORMULÁRIO
 // ===================================================================
+
+/**
+ * Inicializa a validação customizada do formulário de cadastro.
+ * Esta função é chamada pelo Roteador quando a página de cadastro é carregada.
+ */
 function initFormValidation() {
     const form = document.getElementById('form-cadastro');
     if (!form) return; // Segurança, caso o form não exista
 
     form.addEventListener('submit', event => {
-        event.preventDefault();
+        event.preventDefault(); // Impede o envio real
         
         let isFormValid = true;
         
@@ -140,14 +157,13 @@ function initFormValidation() {
             input.classList.remove('input-error');
         });
 
-        // Pega todos os inputs com 'required'
         const inputs = form.querySelectorAll('input[required]');
 
         inputs.forEach(input => {
-            let isValid = input.checkValidity(); // Usa a validação do navegador (pattern, email, etc)
+            let isValid = input.checkValidity(); // Usa a validação nativa
             
-            if (input.type === 'text' && input.value.trim().length < 3) {
-                 isValid = false; // Regra customizada para nome
+            if (input.id === 'nome' && input.value.trim().length < 3) {
+                 isValid = false;
             }
             
             if (!isValid) {
@@ -160,9 +176,60 @@ function initFormValidation() {
             console.log('Formulário válido. Enviando...');
             const successMsg = document.getElementById('form-success-message');
             if (successMsg) successMsg.style.display = 'block';
-            form.reset(); // Limpa o formulário
+            form.reset(); 
+            
+            setTimeout(() => {
+                if (successMsg) successMsg.style.display = 'none';
+            }, 4000);
+
         } else {
             console.log('Formulário inválido.');
+        }
+    });
+}
+
+// ===================================================================
+// ACESSIBILIDADE (Modo Escuro)
+// ===================================================================
+
+/**
+ * Inicializa o botão de troca de tema (Modo Claro/Escuro).
+ */
+function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle-btn');
+    if (!toggleBtn) return;
+
+    // Aplica o tema (salvo ou do sistema)
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            toggleBtn.innerHTML = '&#9728;'; // Ícone de Sol
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            toggleBtn.innerHTML = '&#127769;'; // Ícone de Lua
+        }
+    }
+
+    // Verifica preferência salva no LocalStorage
+    let savedTheme = localStorage.getItem('theme');
+    
+    // Se não houver, verifica a preferência do sistema
+    if (!savedTheme) {
+        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    
+    applyTheme(savedTheme);
+
+    // Evento de clique ao botão
+    toggleBtn.addEventListener('click', () => {
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            localStorage.setItem('theme', 'light');
+            applyTheme('light');
+        } else {
+            localStorage.setItem('theme', 'dark');
+            applyTheme('dark');
         }
     });
 }

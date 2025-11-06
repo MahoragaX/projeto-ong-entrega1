@@ -96,3 +96,20 @@
         background-color: var(--cor-neutra-200);
     }
 }
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--texto-m);
+    color: var(--cor-primaria);
+    padding: 0 var(--espaco-2);
+}
+.theme-toggle:hover {
+    color: var(--cor-secundaria);
+}
+@media (max-width: 767px) {
+    .theme-toggle {
+        order: -1; /* Coloca o botão antes do logo no mobile */
+    }
+}
